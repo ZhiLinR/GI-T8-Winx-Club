@@ -6,3 +6,5 @@ Team members:
 Ooi Zhi Lin
 
 Kylene Sim Kailin
+
+Chua Yee Tong Sharon

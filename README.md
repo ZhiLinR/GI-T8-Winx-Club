@@ -1,5 +1,15 @@
 # GI-T8-Winx-Club
-hello 
+
 
 
 Team members:
+
+Ooi Zhi Lin
+
+Kylene Sim Kailin
+
+Chua Yee Tong Sharon
+
+Mikayla Lian
+
+Yun Waddy Soe

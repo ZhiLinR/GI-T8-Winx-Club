@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'assets/theme/colors.dart' as custom_color;
+import 'assets/theme/main_text.dart' as text_themes;
 
 void main() {
   runApp(const MyApp());
@@ -29,9 +31,8 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         fontFamily: 'Kulim_Park',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: custom_color.mainBrown),
         useMaterial3: true,
-        
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -110,10 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            Text('$_counter',
+                style: TextStyle(color: custom_color.mainTextBrown)),
           ],
         ),
       ),

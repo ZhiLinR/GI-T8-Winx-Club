@@ -88,3 +88,20 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+  # https://fonts.google.com/specimen/Kulim+Park
+     - family: Kulim_Park
+       fonts:
+         - asset: fonts/Kulim_Park/KulimPark-Regular.ttf
+#         - asset: fonts/Kulim_Park/KulimPark-Bold.ttf
+#         - asset: fonts/Kulim_Park/KulimPark-BoldItalic.ttf
+#         - asset: fonts/Kulim_Park/KulimPark-ExtraLight.ttf
+#         - asset: fonts/Kulim_Park/KulimPark-ExtraLightItalic.ttf
+#         - asset: fonts/Kulim_Park/KulimPark-Italic.ttf
+#         - asset: fonts/Kulim_Park/KulimPark-Light.ttf
+#         - asset: fonts/Kulim_Park/KulimPark-LightItalic.ttf
+#         - asset: fonts/Kulim_Park/KulimPark-SemiBold.ttf
+#         - asset: fonts/Kulim_Park/KulimPark-SemiBoldItalic.ttf
+
+         

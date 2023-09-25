@@ -34,6 +34,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: custom_color.mainBrown),
         useMaterial3: true,
       ),
+      // remove default debug banner
+      debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:winx_app/assets/theme/Colors.dart';
 import 'package:winx_app/assets/theme/colors.dart' as custom_color;
-import 'assets/theme/main_text.dart' as text_themes;
+import 'package:winx_app/assets/theme/text_styles.dart' as text_themes;
 import 'main_game_page.dart';
+//import 'package:winx_app/utility/widget_testing.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,23 +23,37 @@ class MyApp extends StatelessWidget {
               seedColor: custom_color.primaryBGBrown,
               background: custom_color.secondaryBGBrown),
           useMaterial3: true,
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          iconTheme: IconThemeData(color: custom_color.inactiveIcon),
+          navigationBarTheme: NavigationBarThemeData(
             backgroundColor: custom_color.primaryBGBrown,
-            selectedIconTheme: IconThemeData(color: custom_color.activeIcon),
-            selectedItemColor: custom_color.activeIconBG,
-            unselectedIconTheme:
-                IconThemeData(color: custom_color.inactiveIcon),
+            indicatorColor: custom_color.activeIconBG,
+            iconTheme: MaterialStateProperty.resolveWith(
+                (states) => IconThemeData(color: custom_color.inactiveIcon)),
           ),
           checkboxTheme: CheckboxThemeData(
               checkColor:
                   MaterialStateProperty.resolveWith((states) => Colors.white),
-              fillColor: MaterialStateProperty.resolveWith(checkBoxFill),
+              fillColor:
+                  MaterialStateProperty.resolveWith(custom_color.checkBoxFill),
               side: BorderSide(color: custom_color.checkBox, width: 16.0)),
           cardTheme: CardTheme(
               color: custom_color.primaryBGBrown,
               shape: RoundedRectangleBorder(
-                  side: BorderSide(color: custom_color.checkBox, width: 16.0))),
-          highlightColor: Colors.white),
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: BorderSide(
+                      color: custom_color.outlineBrown, width: 3.0))),
+          highlightColor: Colors.white,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.resolveWith(
+                      (states) => custom_color.mainTextBrown),
+                  backgroundColor: MaterialStateProperty.resolveWith(
+                      custom_color.elevatedButtonState),
+                  elevation: MaterialStateProperty.resolveWith((states) => 3),
+                  side: MaterialStateProperty.resolveWith((states) =>
+                      BorderSide(color: custom_color.outlineBrown, width: 2.0)),
+                  textStyle: MaterialStateProperty.resolveWith(
+                      text_themes.elevatedButtonTextStyle)))),
 
       // remove default debug banner
       debugShowCheckedModeBanner: false,

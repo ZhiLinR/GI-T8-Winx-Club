@@ -13,3 +13,12 @@ Chua Yee Tong Sharon
 Mikayla Lian
 
 Yun Waddy Soe
+
+# Credits
+**Graphics**
+- Game Tileset: https://limezu.itch.io/moderninteriors - LimeZu
+
+# Acknowledgements and references
+This section is dedicated to these individuals whom our project have reference or adapted codes from:
+1. Vincenzo Guzzi: https://www.kodeco.com/37130129-building-games-in-flutter-with-flame-getting-started?page=1
+2. Craig Oda: https://github.com/codetricity

@@ -1,6 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-// import 'helpers/joypad.dart';
+import 'helpers/joypad.dart';
 import 'mygame.dart';
 
 class MainGamePage extends StatefulWidget {
@@ -24,11 +24,15 @@ class MainGameState extends State<MainGamePage> {
               alignment: Alignment.bottomRight,
               child: Padding(
                 padding: const EdgeInsets.all(32.0),
-                // child:
-                    // Joypad(onDirectionChanged: game.onJoypadDirectionChanged),
+                child:
+                    Joypad(onDirectionChanged: game.onJoypadDirectionChanged),
               ),
             )
           ],
         ));
+  }
+
+  void onJoypadDirectionChanged(Direction direction) {
+    game.onJoypadDirectionChanged(direction);
   }
 }

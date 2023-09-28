@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:winx_app/assets/theme/Colors.dart';
-import 'package:winx_app/assets/theme/colors.dart' as custom_color;
+import 'assets/theme/colors.dart' as custom_color;
 import 'assets/theme/main_text.dart' as text_themes;
 import 'main_game_page.dart';
 
@@ -17,30 +16,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          //todo: input decoration/button
-          fontFamily: 'Stanberry',
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: custom_color.primaryBGBrown,
-              background: custom_color.secondaryBGBrown),
-          useMaterial3: true,
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-            backgroundColor: custom_color.primaryBGBrown,
-            selectedIconTheme: IconThemeData(color: custom_color.activeIcon),
-            selectedItemColor: custom_color.activeIconBG,
-            unselectedIconTheme:
-                IconThemeData(color: custom_color.inactiveIcon),
-          ),
-          checkboxTheme: CheckboxThemeData(
-              checkColor:
-                  MaterialStateProperty.resolveWith((states) => Colors.white),
-              fillColor: MaterialStateProperty.resolveWith(checkBoxFill),
-              side: BorderSide(color: custom_color.checkBox, width: 16.0)),
-          cardTheme: CardTheme(
-              color: custom_color.primaryBGBrown,
-              shape: RoundedRectangleBorder(
-                  side: BorderSide(color: custom_color.checkBox, width: 16.0))),
-          highlightColor: Colors.white),
-
+        // This is the theme of your application.
+        //
+        // TRY THIS: Try running your application with "flutter run". You'll see
+        // the application has a blue toolbar. Then, without quitting the app,
+        // try changing the seedColor in the colorScheme below to Colors.green
+        // and then invoke "hot reload" (save your changes or press the "hot
+        // reload" button in a Flutter-supported IDE, or press "r" if you used
+        // the command line to start the app).
+        //
+        // Notice that the counter didn't reset back to zero; the application
+        // state is not lost during the reload. To reset the state, use hot
+        // restart instead.
+        //
+        // This works for code too, not just values: Most code changes can be
+        // tested with just a hot reload.
+        fontFamily: 'Kulim_Park',
+        colorScheme: ColorScheme.fromSeed(seedColor: custom_color.mainBrown),
+        useMaterial3: true,
+      ),
       // remove default debug banner
       debugShowCheckedModeBanner: false,
       home: const MainGamePage(),

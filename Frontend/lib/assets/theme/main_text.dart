@@ -7,17 +7,17 @@ class MainText extends StatelessWidget {
   const MainText({super.key, required this.text});
   @override
   Widget build(BuildContext context) {
-    return Stack(
+   return Stack(
       children: <Widget>[
         // Stroked text as border.
-        Text(
+         Text(
           text,
           style: TextStyle(
             fontSize: 40,
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = 6
-              ..color = Colors.white,
+              ..color = Colors.blue[700]!,
           ),
         ),
         // Solid text as fill.
@@ -25,7 +25,7 @@ class MainText extends StatelessWidget {
           text,
           style: TextStyle(
             fontSize: 40,
-            color: custom_color.mainTextBrown,
+            color: Colors.grey[300],
           ),
         ),
       ],

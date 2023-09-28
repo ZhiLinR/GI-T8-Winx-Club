@@ -90,12 +90,9 @@ flutter:
 
   fonts:
     # https://fonts.google.com/specimen/Kulim+Park
-    - family: Stanberry
+    - family: Kulim_Park
       fonts:
-        - asset: fonts/Stanberry/Stanberry.ttf
-    - family: Comic_Neue_Sans
-      fonts:
-        - asset: fonts/Comic_Neue_Sans_ID/ComicNeueSansID.ttf
+        - asset: fonts/Kulim_Park/KulimPark-Regular.ttf
 #         - asset: fonts/Kulim_Park/KulimPark-Bold.ttf
 #         - asset: fonts/Kulim_Park/KulimPark-BoldItalic.ttf
 #         - asset: fonts/Kulim_Park/KulimPark-ExtraLight.ttf

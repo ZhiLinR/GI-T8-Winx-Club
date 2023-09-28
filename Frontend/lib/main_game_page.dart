@@ -2,6 +2,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'helpers/joypad.dart';
 import 'mygame.dart';
+import 'helpers/direction.dart';
 
 class MainGamePage extends StatefulWidget {
   const MainGamePage({Key? key}) : super(key: key);

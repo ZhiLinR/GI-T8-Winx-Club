@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:winx_app/assets/theme/colors.dart' as custom_color;
 import 'package:winx_app/assets/theme/text_styles.dart' as text_themes;
+import 'package:winx_app/mygame.dart';
 import 'main_game_page.dart';
 //import 'package:winx_app/utility/widget_testing.dart';
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           iconTheme: IconThemeData(color: custom_color.inactiveIcon),
           navigationBarTheme: NavigationBarThemeData(
+            elevation: 10,
             backgroundColor: custom_color.primaryBGBrown,
             indicatorColor: custom_color.activeIconBG,
             iconTheme: MaterialStateProperty.resolveWith(
@@ -43,6 +45,15 @@ class MyApp extends StatelessWidget {
                   side: BorderSide(
                       color: custom_color.outlineBrown, width: 3.0))),
           highlightColor: Colors.white,
+          bottomSheetTheme: BottomSheetThemeData(
+              modalBarrierColor: custom_color.outlineBrown,
+              modalBackgroundColor: custom_color.secondaryBGBrown,
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                top: Radius.circular(35.0),
+              )),
+              backgroundColor: custom_color.secondaryBGBrown,
+              dragHandleColor: custom_color.outlineBrown),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
                   foregroundColor: MaterialStateProperty.resolveWith(

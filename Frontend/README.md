@@ -2,17 +2,27 @@
 
 GI-T8-Winx-Club Google Ignite Project
 
-## Documentation for Reusable Components
+## Documentation of ThemeData
+**Widgets with defined styles under ThemeData** 
+- NavigationBar -> NavigationBarThemeData 
+- Card -> CardTheme 
+- Button (specifically **ElevatedButton**) -> ElevatedButtonThemeData
+- Checkbox -> checkboxTheme
+
+---
+
+## Documentation for Reusable Classes for Styling
 **text_styles.dart** <br>
 class TextStylingOptions contains functions to quickly customise text throughout the application, 
-if the text styling made from `ThemeData` clashes with the styling (or can't be seen)
+if the text styling generated from `ThemeData` clashes with the styling (or can't be seen)
 Documentation for the functions has been created within the code
 
 ---
 
 ### static Function bodyText() 
+*Function Call: text_themes.TextStylingOptions.bodyText(Color, boolean, double)*<br>
 Styling for text contained within the body.<br>
-@return Returns a Textstyle object <br>
+@return Returns a `Textstyle` object <br>
 
 **Parameters** (? - accepts `null` arguments) <br>
 `bodyText(Color? color, bool? strikethrough, double? fontsize)`
@@ -24,8 +34,9 @@ Styling for text contained within the body.<br>
 ---
 
 ### static Function borderedText() 
+*Function Call: text_themes.TextStylingOptions.borderedText("String", Color, int, double, boolean),*<br>
 Styling text for more emphasis with a white border. <br>
-@return Returns a Stack object which can be inserted directly into child arrays as an element.<br>
+@return Returns a `Stack` object which can be inserted directly into child arrays as an element.<br>
 Reference method - [Flutter API: Borders and stroke(Foreground)](https://api.flutter.dev/flutter/painting/TextStyle-class.html)
 
 **Parameters** (? - accepts `null` arguments). Default styling is meant for headers. <br>

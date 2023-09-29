@@ -19,7 +19,7 @@ class Player extends SpriteAnimationComponent with HasGameRef {
 
   Player()
       : super(
-          size: Vector2.all(50.0),
+          size: Vector2.all(90.0),
         );
 
   @override
@@ -30,7 +30,7 @@ class Player extends SpriteAnimationComponent with HasGameRef {
   Future<void> _loadAnimations() async {
     final spriteSheet = SpriteSheet(
       image: await gameRef.images.load('spritesheet.png'),
-      srcSize: Vector2(29.0, 48.0),
+      srcSize: Vector2(48.0, 48.0),
     );
 
   _upAnimation =
@@ -46,7 +46,7 @@ class Player extends SpriteAnimationComponent with HasGameRef {
     spriteSheet.createAnimation(row: 3, stepTime: _animationSpeed, to: 6);
   
   _standingAnimation =
-    spriteSheet.createAnimation(row: 4, stepTime: _animationSpeed, to: 6);
+    spriteSheet.createAnimation(row: 4, stepTime: _animationSpeed, to: 1);
   }
 
   @override

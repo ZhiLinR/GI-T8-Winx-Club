@@ -8,6 +8,7 @@ GI-T8-Winx-Club Google Ignite Project
 - Card -> CardTheme 
 - Button (specifically **ElevatedButton**) -> ElevatedButtonThemeData
 - Checkbox -> checkboxTheme
+- BottomSheet -> BottomSheetThemeData ( for the shop catalogue)
 
 ---
 

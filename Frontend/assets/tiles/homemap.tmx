@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="10" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="1">
  <tileset firstgid="1" name="Room_Builder_32x32" tilewidth="32" tileheight="32" tilecount="8284" columns="76">
-  <image source="Room_Builder_32x32.png" width="2432" height="3488"/>
+  <image source="../images/Room_Builder_32x32.png" width="2432" height="3488"/>
  </tileset>
  <tileset firstgid="8285" name="Interiors_32x32" tilewidth="32" tileheight="32" tilecount="17024" columns="16">
-  <image source="Interiors_32x32.png" width="512" height="34048"/>
+  <image source="../images/Interiors_32x32.png" width="512" height="34048"/>
  </tileset>
  <layer id="1" name="Floor" width="10" height="20">
   <data encoding="base64">

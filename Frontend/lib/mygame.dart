@@ -16,5 +16,4 @@ class MyGame extends FlameGame {
   void onJoypadDirectionChanged(Direction direction) {
     _player.direction = direction;
   }
-
 }

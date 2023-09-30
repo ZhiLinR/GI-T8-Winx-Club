@@ -2,8 +2,6 @@ import 'package:flame/components.dart';
 import '../helpers/direction.dart';
 import 'package:flame/sprite.dart';
 
-
-
 class Player extends SpriteAnimationComponent with HasGameRef {
   final double _playerSpeed = 300.0;
   final double _animationSpeed = 0.15;
@@ -13,7 +11,6 @@ class Player extends SpriteAnimationComponent with HasGameRef {
   late final SpriteAnimation _leftAnimation;
   late final SpriteAnimation _rightAnimation;
   late final SpriteAnimation _standingAnimation;
-
 
   Direction direction = Direction.none;
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:winx_app/assets/theme/colors.dart' as custom_color;
 import 'package:winx_app/assets/theme/text_styles.dart' as text_themes;
-import 'package:winx_app/mygame.dart';
 import 'main_game_page.dart';
 //import 'package:winx_app/utility/widget_testing.dart';
 

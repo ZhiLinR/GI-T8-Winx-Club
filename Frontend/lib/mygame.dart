@@ -10,23 +10,22 @@ class MyGame extends FlameGame {
 
   @override
   Future<void> onLoad() async {
-    final homeMap = await TiledComponent.load('homemap.tmx', Vector2.all(32));
-    add(homeMap);
+    final level = await TiledComponent.load('homemap.tmx', Vector2.all(32));
+    add(level);
 
-    final objectGroup = homeMap.tileMap.getLayer<ObjectGroup>('AnimatedSink');
+    final objectGroup = level.tileMap.getLayer<ObjectGroup>('AnimatedSink');
     final sink = await Flame.images.load('sink.png');
 
     for (final object in objectGroup!.objects) {
-      world.add(
+      add(
         SpriteAnimationComponent(
-          size: Vector2.all(32.0),
           position: Vector2(object.x, object.y),
           animation: SpriteAnimation.fromFrameData(
             sink,
             SpriteAnimationData.sequenced(
               amount: 3,
-              stepTime: .15,
-              textureSize: Vector2.all(32),
+              stepTime: 0.15,
+              textureSize: Vector2(62.3529, 64.7059),
             ),
           ),
         ),

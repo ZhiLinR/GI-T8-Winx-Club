@@ -73,6 +73,7 @@ class TextStylingOptions {
         // Stroked text as border.
         Text(
           text,
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: fontChoice,
             fontSize: fontsize,
@@ -85,6 +86,7 @@ class TextStylingOptions {
         // Solid text as fill.
         Text(
           text,
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: fontChoice,
             fontSize: fontsize,

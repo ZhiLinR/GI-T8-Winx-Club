@@ -10,11 +10,11 @@ class MyGame extends FlameGame {
 
   @override
   Future<void> onLoad() async {
-    final level = await TiledComponent.load('homemap.tmx', Vector2.all(32));
+    final level = await TiledComponent.load('homemap.tmx', Vector2.all(32.0));
     add(level);
 
     final objectGroup = level.tileMap.getLayer<ObjectGroup>('AnimatedSink');
-    final sink = await Flame.images.load('sink.png');
+    final sink = await Flame.images.load('Sink.png');
 
     for (final object in objectGroup!.objects) {
       add(
@@ -25,7 +25,7 @@ class MyGame extends FlameGame {
             SpriteAnimationData.sequenced(
               amount: 3,
               stepTime: 0.15,
-              textureSize: Vector2(64, 66),
+              textureSize: Vector2.all(64.0),
             ),
           ),
         ),

@@ -3,6 +3,7 @@ import 'package:winx_app/assets/theme/colors.dart' as custom_color;
 import 'package:winx_app/assets/theme/text_styles.dart' as text_themes;
 import 'main_game_page.dart';
 import 'package:flame/flame.dart';
+import 'package:winx_app/pages/home_page.dart';
 //import 'package:winx_app/utility/widget_testing.dart';
 
 void main() {
@@ -48,13 +49,14 @@ class MyApp extends StatelessWidget {
                       color: custom_color.outlineBrown, width: 3.0))),
           highlightColor: Colors.white,
           bottomSheetTheme: BottomSheetThemeData(
-              modalBarrierColor: custom_color.outlineBrown,
+              //modalBarrierColor: custom_color.outlineBrown,
               modalBackgroundColor: custom_color.secondaryBGBrown,
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                 top: Radius.circular(35.0),
               )),
               backgroundColor: custom_color.secondaryBGBrown,
+              showDragHandle: true,
               dragHandleColor: custom_color.outlineBrown),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
@@ -70,7 +72,7 @@ class MyApp extends StatelessWidget {
 
       // remove default debug banner
       debugShowCheckedModeBanner: false,
-      home: const MainGamePage(),
+      home: const HomePage(),
     );
   }
 }

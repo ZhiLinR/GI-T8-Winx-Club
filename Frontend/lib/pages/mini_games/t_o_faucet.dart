@@ -89,18 +89,7 @@ class _Faucet extends State<Faucet> with TickerProviderStateMixin {
             ],
           )),
       GestureDetector(
-          onHorizontalDragStart: (details) {
-            //DragStartDetails details;
-            //use global position to determine zRotation
-            //debugPrint(details.toString());
-            /* setState(() {
-                zRotation = 0.45;
-              }); */
-            /* setState(() {
-              const FaucetGIF(min: 0, max: 19);
-            }); */
-            //controller.stop();
-          },
+          onHorizontalDragStart: (details) {},
           onHorizontalDragUpdate: (details) => {
                 //debugPrint(details.delta.toString()),
                 setState(() {

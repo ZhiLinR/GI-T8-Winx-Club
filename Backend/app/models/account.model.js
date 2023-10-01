@@ -19,6 +19,11 @@ module.exports = (mongoose) => {
                 min: 0,
                 default: 0,
             },
+            task_count: {
+                type: Number,
+                min: 0,
+                default: 0,
+            },
             items: [{ item_name: String, item_count: Number }],
         })
     );

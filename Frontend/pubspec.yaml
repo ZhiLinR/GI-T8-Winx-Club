@@ -40,6 +40,7 @@ dependencies:
   simple_animations: ^5.0.2
   http: ^1.1.0
   flutter_dotenv: ^5.1.0
+  flutter_gif: ^0.0.4
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,9 @@ flutter:
 
     #Assets for the mini_games
     - lib/assets/mini_games/
+
+    #Assets for Shop
+    - lib/assets/shop/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

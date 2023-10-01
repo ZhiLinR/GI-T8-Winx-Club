@@ -25,7 +25,7 @@ class MyGame extends FlameGame {
             SpriteAnimationData.sequenced(
               amount: 3,
               stepTime: 0.15,
-              textureSize: Vector2(62.3529, 64.7059),
+              textureSize: Vector2(64, 66),
             ),
           ),
         ),

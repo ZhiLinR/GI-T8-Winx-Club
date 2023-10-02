@@ -125,7 +125,7 @@ describe('PUT account', function () {
             .put('/api/accounts/yun')
             .set('Content-Type', 'application/json')
             .send({ username: "yun", password: "12345", nickname: "soe" })
-            .expect(200, done());
+            .expect(201, done());
     });
 
 });
@@ -241,7 +241,7 @@ describe('PUT item', function () {
             .put('/api/accounts/yun')
             .set('Content-Type', 'application/json')
             .send({ item_name: "table", item_price: 100 })
-            .expect(200, done());
+            .expect(201, done());
     });
 
 });
@@ -357,7 +357,7 @@ describe('PUT task', function () {
             .put('/api/tasks/close tap')
             .set('Content-Type', 'application/json')
             .send({ task_name: "close tap", task_description: "Close the tap!" })
-            .expect(200, done());
+            .expect(201, done());
     });
 
 });

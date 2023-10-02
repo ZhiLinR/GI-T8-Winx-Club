@@ -123,7 +123,7 @@ class ShowItemDetails extends StatefulWidget {
 class _ShowItemDetails extends State<ShowItemDetails>
     with TickerProviderStateMixin {
   String username = getStringFromLocalStorage('username').toString();
-  late Future account;
+  late final Future<Account?> account;
 
   @override
   Widget build(BuildContext context) {
@@ -174,40 +174,43 @@ class _ShowItemDetails extends State<ShowItemDetails>
           child: const Text('Buy'),
           onPressed: () {
             //TO ADD UPDATE METHOD
+
             account = Future.value(ApiService().getAccountByUsername(username));
-            bool buy = purchasePossible(widget.itemPrice, account as Account);
-            if (buy) {
-              Account a = account as Account;
-              a.balance = calculatePurchase(a.balance, widget.itemPrice);
+            Future.value(account).then((value) {
+              Account a = value!;
+              bool buy = purchasePossible(widget.itemPrice, a);
+              if (buy) {
+                a.balance = calculatePurchase(a.balance, widget.itemPrice);
 
-              // Update items
-              bool itemExist = false;
-              for (UserItem i in a.items) {
-                if (i.itemName == widget.itemName) {
-                  i.itemCount += 1;
-                  itemExist = true;
-                  break;
+                // Update items
+                bool itemExist = false;
+                for (UserItem i in a.items) {
+                  if (i.itemName == widget.itemName) {
+                    i.itemCount += 1;
+                    itemExist = true;
+                    break;
+                  }
                 }
-              }
-              !itemExist
-                  ? a.items
-                      .add(UserItem(itemName: widget.itemName, itemCount: 1))
-                  : null;
+                !itemExist
+                    ? a.items
+                        .add(UserItem(itemName: widget.itemName, itemCount: 1))
+                    : null;
 
-              // Testing - print statements
-              debugPrint(a.balance.toString());
-              print(a);
+                // Testing - print statements
+                debugPrint(a.balance.toString());
+                print(a);
 
-              Future result =
-                  Future.value(ApiService().putAccount(username, a));
-              if (result != null) {
-                const Text("Purchased!");
+                var result = Future.value(ApiService().putAccount(username, a));
+                if (result != null) {
+                  const Text("Purchased!");
+                } else {
+                  const Text("Purchase failed!");
+                }
               } else {
-                const Text("Purchase failed!");
+                const Text("You do not have enough currency!");
               }
-            } else {
-              const Text("You do not have enough currency!");
-            }
+              setState(() {});
+            });
             Navigator.of(context).pop();
           },
         ),

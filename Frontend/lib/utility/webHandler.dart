@@ -14,12 +14,15 @@ class ApiService {
       var endPoint = "/$username";
       var url = Uri.parse(
           ApiConstants.baseUrl + ApiConstants.accountEndpoint + endPoint);
-      var response = await http.get(url);
 
-      if (response.statusCode == 200) {
-        Account model = accountFromJson(response.body);
-        return model;
-      }
+      return await http.get(url).then((response) {
+        if (response.statusCode == 200) {
+          Account model = accountFromJson(response.body);
+          return model;
+        } else {
+          throw Exception("Failed to fetch account.");
+        }
+      });
     } catch (e) {
       log(e.toString());
     }
@@ -31,12 +34,15 @@ class ApiService {
       var endPoint = "/$username/$password";
       var url = Uri.parse(
           ApiConstants.baseUrl + ApiConstants.accountEndpoint + endPoint);
-      var response = await http.get(url);
 
-      if (response.statusCode == 200) {
-        Account model = accountFromJson(response.body);
-        return model;
-      }
+      return await http.get(url).then((response) {
+        if (response.statusCode == 200) {
+          Account model = accountFromJson(response.body);
+          return model;
+        } else {
+          throw Exception("Failed to fetch account.");
+        }
+      });
     } catch (e) {
       log(e.toString());
     }
@@ -65,12 +71,15 @@ class ApiService {
 
       var url = Uri.parse(
           ApiConstants.baseUrl + ApiConstants.accountEndpoint + endPoint);
-      var response = await http.put(url, headers: headers, body: body);
 
-      if (response.statusCode == 201) {
-        Account model = accountFromJson(response.body);
-        return model;
-      }
+      return await http.put(url, headers: headers, body: body).then((response) {
+        if (response.statusCode == 200) {
+          Account model = accountFromJson(response.body);
+          return model;
+        } else {
+          throw Exception("Failed to update account.");
+        }
+      });
     } catch (e) {
       log(e.toString());
     }
@@ -96,12 +105,15 @@ class ApiService {
   Future<List<Task>?> getTasks() async {
     try {
       var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.taskEndpoint);
-      var response = await http.get(url);
 
-      if (response.statusCode == 200) {
-        List<Task> model = tasksFromJson(response.body);
-        return model;
-      }
+      return await http.get(url).then((response) {
+        if (response.statusCode == 200) {
+          List<Task> model = tasksFromJson(response.body);
+          return model;
+        } else {
+          throw Exception("Failed to fetch tasks.");
+        }
+      });
     } catch (e) {
       log(e.toString());
     }

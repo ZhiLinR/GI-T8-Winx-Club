@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
@@ -5,7 +7,7 @@ import 'package:flame_tiled/flame_tiled.dart';
 import 'components/player.dart';
 import 'helpers/direction.dart';
 import 'helpers/map_loader.dart';
-import 'components/world_collidable.dart';
+import 'components/collidable.dart';
 
 class MyGame extends FlameGame with HasCollisionDetection{
   final Player player = Player();
@@ -38,20 +40,33 @@ class MyGame extends FlameGame with HasCollisionDetection{
     // PLAYER
     add(player);
 
+    // Screen boundary
+    add(ScreenHitbox());
+
     // COLLISIONS
-    addWorldCollision();
+    addCollision();
   }
 
-  void addWorldCollision() async =>
+  void addCollision() async =>
     (await MapLoader.readRayWorldCollisionMap()).forEach((rect) {
-      add(WorldCollidable()
+      add(Collidable()
         ..position = Vector2(rect.left, rect.top)
         ..width = rect.width
-        ..height = rect.height);
+        ..height = rect.height); {
+          debugMode = true;
+        }
     });
 
 
   void onJoypadDirectionChanged(Direction direction) {
     player.direction = direction;
+  }
+
+    Collidable createCollidable(Rect rect) {
+    final collidable = Collidable();
+    collidable.position = Vector2(rect.left, rect.top);
+    collidable.width = rect.width;
+    collidable.height = rect.height;
+    return collidable;
   }
 }

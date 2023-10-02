@@ -1,9 +1,12 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import '../helpers/direction.dart';
 import 'package:flame/sprite.dart';
-// import 'package:winx_app/components/collision_block.dart';
+import 'collidable.dart';
 
-class Player extends SpriteAnimationComponent with HasGameRef {
+
+
+class Player extends SpriteAnimationComponent with HasGameRef, CollisionCallbacks {
   final double playerSpeed = 300.0;
   final double animationSpeed = 0.15;
 
@@ -14,13 +17,17 @@ class Player extends SpriteAnimationComponent with HasGameRef {
   late final SpriteAnimation standingAnimation;
 
   Direction direction = Direction.none;
-  // List<CollisionBlock> collisionBlocks = [];
+  Direction _collisionDirection = Direction.none;
+  bool _hasCollided = false;
+
 
   Player()
       : super(
           size: Vector2.all(70.0),
-          position: Vector2(160, 464)
-        );
+          position: Vector2(160, 464),
+        ) {
+    add(RectangleHitbox());
+  }
 
   @override
   Future<void> onLoad() async {
@@ -54,31 +61,84 @@ class Player extends SpriteAnimationComponent with HasGameRef {
   void update(double dt) {
     super.update(dt);
     movePlayer(dt);
-    // _checkHorizontalCollisions();
+  }
+
+  // COLLISIONS
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    super.onCollision(intersectionPoints, other);
+    if (other is Collidable) {
+      if (!_hasCollided) {
+        _hasCollided = true;
+        _collisionDirection = direction;
+      }
+    }
+  }
+
+  @override
+  void onCollisionEnd(PositionComponent other) {
+    super.onCollisionEnd(other);
+    _hasCollided = false;
   }
 
   void movePlayer(double delta) {
     switch (direction) {
       case Direction.up:
-        animation = upAnimation;
-        moveUp(delta);
+        if (canPlayerMoveUp()) {
+          animation = upAnimation;
+          moveUp(delta);
+        }
         break;
       case Direction.down:
-        animation = downAnimation;
-        moveDown(delta);
+        if (canPlayerMoveDown()) {
+          animation = downAnimation;
+          moveDown(delta);
+        }
         break;
       case Direction.left:
-        animation = leftAnimation;
-        moveLeft(delta);
+        if (canPlayerMoveLeft()) {
+          animation = leftAnimation;
+          moveLeft(delta);
+        }
         break;
       case Direction.right:
-        animation = rightAnimation;
-        moveRight(delta);
+        if (canPlayerMoveRight()) {
+          animation = rightAnimation;
+          moveRight(delta);
+        }
         break;
       case Direction.none:
         animation = standingAnimation;
         break;
     }
+  }
+
+  bool canPlayerMoveUp() {
+    if (_hasCollided && _collisionDirection == Direction.up) {
+      return false;
+    }
+    return true;
+  }
+
+  bool canPlayerMoveDown() {
+    if (_hasCollided && _collisionDirection == Direction.down) {
+      return false;
+    }
+    return true;
+  }
+
+  bool canPlayerMoveLeft() {
+    if (_hasCollided && _collisionDirection == Direction.left) {
+      return false;
+    }
+    return true;
+  }
+
+  bool canPlayerMoveRight() {
+    if (_hasCollided && _collisionDirection == Direction.right) {
+      return false;
+    }
+    return true;
   }
 
   void moveDown(double delta) {
@@ -93,15 +153,4 @@ class Player extends SpriteAnimationComponent with HasGameRef {
   void moveRight(double delta) {
     position.add(Vector2(delta * playerSpeed, 0));
   }
-  
-  // void _checkHorizontalCollisions() {
-  //   for(final block in collisionBlocks) {
-  //     // handle collision for blocks that are not the sink
-  //     if(!block.isSink) {
-  //       if(checkCollision(this, block)) {
-          
-  //       }
-  //     }
-  //   }
-  // }
 }

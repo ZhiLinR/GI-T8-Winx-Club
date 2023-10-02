@@ -72,6 +72,9 @@ flutter:
 
     #Assets for the mini_games
     - lib/assets/mini_games/
+    
+    #assets for themes
+    - lib/assets/theme/
 
     #Assets for Shop
     - lib/assets/shop/

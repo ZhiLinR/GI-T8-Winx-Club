@@ -33,17 +33,21 @@ class _ShopCatalogueItem extends State<ShopCatalogueItem>
       clipBehavior: Clip.antiAlias,
       //margin: EdgeInsets.only(left: 20.0, right: 20.0, top: 5.0),
       child: Container(
-        width: 160,
-        height: 160,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
-            image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage('lib/assets/shop/${widget.fileName}'))),
-        child: Row(
+            image: const DecorationImage(
+                fit: BoxFit.fitWidth,
+                image: AssetImage('lib/assets/theme/shop_theme.jpg'))),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            SizedBox(
+                width: 160,
+                height: 120,
+                child: Image(
+                    fit: BoxFit.none,
+                    image: AssetImage('lib/assets/shop/${widget.fileName}'))),
             Expanded(
                 child: GestureDetector(
                     onTap: () {
@@ -62,10 +66,6 @@ class _ShopCatalogueItem extends State<ShopCatalogueItem>
                         alignment: const Alignment(-1, -0.5),
                         height: 40,
                         decoration: BoxDecoration(
-                          /*  image: const DecorationImage(
-                              image:
-                                  AssetImage('lib/assets/theme/shop_theme.jpg'),
-                              fit: BoxFit.fill), */
                           color: custom_color.primaryBGBrown,
                           border: Border.all(
                             color: custom_color.outlineBrown,
@@ -135,20 +135,26 @@ class _ShowItemDetails extends State<ShowItemDetails>
         child: ListBody(
           children: <Widget>[
             Container(
-                margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                width: 160,
-                height: 160,
-                decoration: BoxDecoration(
-                    color: custom_color.primaryBGBrown,
-                    border: Border.all(
-                      color: custom_color.outlineBrown,
-                      width: 3,
-                    ),
-                    borderRadius: BorderRadius.circular(10.0),
-                    image: DecorationImage(
-                        fit: BoxFit.none,
-                        image:
-                            AssetImage('lib/assets/shop/${widget.fileName}')))),
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+              width: 160,
+              height: 160,
+              decoration: BoxDecoration(
+                  color: custom_color.primaryBGBrown,
+                  border: Border.all(
+                    color: custom_color.outlineBrown,
+                    width: 3,
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                  image: const DecorationImage(
+                      fit: BoxFit.fitWidth,
+                      image: AssetImage('lib/assets/theme/shop_theme.jpg'))),
+              child: SizedBox(
+                  width: 160,
+                  height: 120,
+                  child: Image(
+                      fit: BoxFit.none,
+                      image: AssetImage('lib/assets/shop/${widget.fileName}'))),
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,

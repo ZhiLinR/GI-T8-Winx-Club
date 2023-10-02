@@ -25,7 +25,7 @@ class MainGameState extends State<MainGamePage> {
         Align(
           alignment: Alignment.bottomRight,
           child: Padding(
-            padding: const EdgeInsets.all(40.0),
+            padding: const EdgeInsets.fromLTRB(40, 40, 20, 80),
             child: Joypad(onDirectionChanged: game.onJoypadDirectionChanged),
           ),
         ),
@@ -39,11 +39,11 @@ class MainGameState extends State<MainGamePage> {
                     MaterialPageRoute(
                         builder: (context) => const MiniGameTurnOffFaucet()));
               },
-              child: Container(
+              child: const SizedBox(
                 width: 100,
                 height: 100,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white, width: 1.0)),
+                /* decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 1.0)), */
               )),
         ),
         const Align(
@@ -58,3 +58,50 @@ class MainGameState extends State<MainGamePage> {
     game.onJoypadDirectionChanged(direction);
   }
 }
+
+/* class ScreenShotShare extends StatefulWidget {
+  const ScreenShotShare({Key? key}) : super(key: key);
+
+  @override
+  _ScreenShotShare createState() => _ScreenShotShare();
+}
+
+class _ScreenShotShare extends State<ScreenShotShare> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Stack(
+      children: [
+        GameWidget(game: game),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(40, 40, 20, 80),
+            child: Joypad(onDirectionChanged: game.onJoypadDirectionChanged),
+          ),
+        ),
+        Positioned(
+          top: 350,
+          right: 0,
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MiniGameTurnOffFaucet()));
+              },
+              child: const SizedBox(
+                width: 100,
+                height: 100,
+                /* decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 1.0)), */
+              )),
+        ),
+        const Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+                padding: EdgeInsets.all(30.0), child: GamePageHeader())),
+      ],
+    ));
+  }
+} */

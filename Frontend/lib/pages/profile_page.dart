@@ -1,9 +1,11 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
+import 'package:winx_app/assets/theme/text_styles.dart';
 //import 'package:flutter/widgets.dart';
 import 'package:winx_app/components/localStorage.dart';
 import 'package:winx_app/utility/account_model.dart';
 import 'package:winx_app/utility/webHandler.dart';
+import 'package:simple_animations/simple_animations.dart';
 
 class MyProfile extends StatefulWidget {
   const MyProfile({super.key});
@@ -45,12 +47,78 @@ class _MyProfileState extends State<MyProfile> {
     return Scaffold(
       body: Center(
           child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text('Name: $nickname'),
-          Text('Currency: $currency'),
-          Text('Tasks completed: $tasksCompleted'),
+          Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  image: const DecorationImage(
+                      fit: BoxFit.fitWidth,
+                      image: AssetImage('lib/assets/theme/profile_pic.jpg'))),
+              child: const Image(
+                  fit: BoxFit.fitWidth,
+                  image: AssetImage("lib/assets/theme/background_house.png"))),
+          TextStylingOptions.borderedText(
+              'Name: $nickname', null, 30, null, false),
+          TextStylingOptions.borderedText(
+              'Currency: $currency', null, 30, null, false),
+          TextStylingOptions.borderedText(
+              'Tasks completed: $tasksCompleted', null, 30, null, false),
         ],
       )),
     );
+  }
+}
+
+class LoopingBackground extends StatelessWidget {
+  const LoopingBackground({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: <Widget>[
+      LoopAnimationBuilder<double>(
+        tween: Tween(
+            begin: -MediaQuery.of(context).size.width,
+            end: 0), // value for offset x-coordinate
+        duration: const Duration(seconds: 10),
+        curve: Curves.linear,
+        builder: (context, value, child) {
+          return Transform.translate(
+            offset: Offset(value, 0), // use animated value for x-coordinate
+            child: child,
+          );
+        },
+        child: Container(
+            decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("lib/assets/theme/background_sky.png"),
+            fit: BoxFit.cover,
+          ),
+        )),
+      ),
+      LoopAnimationBuilder<double>(
+        tween: Tween(
+            begin: 0,
+            end: MediaQuery.of(context)
+                .size
+                .width), // value for offset x-coordinate
+        duration: const Duration(seconds: 10),
+        curve: Curves.linear,
+        builder: (context, value, child) {
+          return Transform.translate(
+            offset: Offset(value, 0), // use animated value for x-coordinate
+            child: child,
+          );
+        },
+        child: Container(
+            decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/assets/theme/background_sky.png'),
+            fit: BoxFit.cover,
+          ),
+        )),
+      )
+    ]);
   }
 }

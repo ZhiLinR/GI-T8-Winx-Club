@@ -7,6 +7,8 @@ import 'package:winx_app/widgets/header.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:winx_app/pages/shop_page.dart';
+import 'package:winx_app/pages/friend_map.dart';
+import 'package:winx_app/widgets/friendslist.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,33 +23,30 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.topRight,
-        children: [
-          const StaticGameMap(),
-          Container(
-              padding: const EdgeInsets.all(30),
-              child: PageTitleHeader(pageName: pageTitle)),
-          Center(
-              heightFactor: MediaQuery.sizeOf(context).height,
-              widthFactor: MediaQuery.sizeOf(context).width,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const MainGamePage()));
-                      },
-                      child: const Text("Start Daily Tasks"))
-                ],
-              )),
-          const Positioned(left: 30, bottom: 30, child: ShopCatalogue()),
-        ],
-      ),
-    );
+        body: Stack(alignment: Alignment.topRight, children: [
+      const StaticGameMap(),
+      Container(
+          padding: const EdgeInsets.all(30),
+          child: PageTitleHeader(pageName: pageTitle)),
+      Center(
+          heightFactor: MediaQuery.sizeOf(context).height,
+          widthFactor: MediaQuery.sizeOf(context).width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MainGamePage()));
+                  },
+                  child: const Text("Start Daily Tasks"))
+            ],
+          )),
+      const Positioned(left: 30, bottom: 30, child: ShopCatalogue()),
+      const Positioned(left: 30, bottom: 110, child: FriendsList()),
+    ]));
   }
 }
 

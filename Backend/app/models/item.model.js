@@ -9,6 +9,10 @@ module.exports = (mongoose) => {
             item_price: {
                 type: Number,
                 required: true,
+            },
+            item_display: {
+                type: Boolean,
+                default: true,
             }
         })
     );

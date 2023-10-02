@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:winx_app/assets/theme/colors.dart' as custom_color;
 import 'package:winx_app/assets/theme/text_styles.dart';
+import 'package:winx_app/components/localStorage.dart';
 import 'package:winx_app/utility/webHandler.dart';
 import 'package:winx_app/main_game_page.dart';
 import 'package:flame/flame.dart';
@@ -14,10 +15,11 @@ class CurrencyDisplay extends StatefulWidget {
 
 class _CurrencyDisplay extends State<CurrencyDisplay> {
   dynamic accountBalance;
+  String username = getStringFromLocalStorage('username').toString();
   @override
   void initState() {
     late final Future itemList =
-        Future.value(ApiService().getAccountByUsername("yun"));
+        Future.value(ApiService().getAccountByUsername(username));
     dynamic catalogue;
     Future.value(itemList).then((value) {
       debugPrint(value.runtimeType.toString());

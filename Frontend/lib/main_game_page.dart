@@ -4,6 +4,7 @@ import 'helpers/joypad.dart';
 import 'mygame.dart';
 import 'helpers/direction.dart';
 import 'package:winx_app/widgets/header.dart';
+import 'package:winx_app/pages/mini_games/t_o_faucet.dart';
 
 class MainGamePage extends StatefulWidget {
   const MainGamePage({Key? key}) : super(key: key);
@@ -28,15 +29,27 @@ class MainGameState extends State<MainGamePage> {
             child: Joypad(onDirectionChanged: game.onJoypadDirectionChanged),
           ),
         ),
+        Positioned(
+          top: 350,
+          right: 0,
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MiniGameTurnOffFaucet()));
+              },
+              child: Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 1.0)),
+              )),
+        ),
         const Align(
             alignment: Alignment.topCenter,
             child: Padding(
                 padding: EdgeInsets.all(30.0), child: GamePageHeader())),
-        Positioned(
-            child: Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 1.0)),
-        ))
       ],
     ));
   }

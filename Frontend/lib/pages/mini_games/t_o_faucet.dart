@@ -82,10 +82,15 @@ class _Faucet extends State<Faucet> with TickerProviderStateMixin {
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 30),
           child: Column(
             children: [
-              text_themes.TextStylingOptions.borderedText(
-                  message, null, 35, null, true),
-              text_themes.TextStylingOptions.borderedText(
-                  message2, null, 30, null, false),
+              Container(
+                  margin: const EdgeInsets.fromLTRB(20, 0, 20, 30),
+                  child: text_themes.TextStylingOptions.borderedText(
+                      message, custom_color.mainTextBrown, 35, null, true)),
+              Text(
+                message2,
+                textAlign: TextAlign.center,
+                style: text_themes.TextStylingOptions.bodyText(null, null, 20),
+              )
             ],
           )),
       GestureDetector(
@@ -114,10 +119,16 @@ class _Faucet extends State<Faucet> with TickerProviderStateMixin {
             setState(() {
               if (currentZRotation == 0.0) {
                 message = "Good Job!";
-                message2 = "You helped to save your water bill!";
+                message2 =
+                    "Turning off the tap when not in use can save up to 30 litres of water daily (up to 30 waterbottles)!";
                 controller.animateTo(18,
                     duration: const Duration(milliseconds: 500));
                 controller2.animateTo(8, duration: const Duration(seconds: 5));
+                Future.delayed(const Duration(seconds: 6), () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                });
               } else {
                 controller.repeat(
                     min: currentFrame - 1,

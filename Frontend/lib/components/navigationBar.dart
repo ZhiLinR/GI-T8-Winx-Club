@@ -40,7 +40,7 @@ class _NavigationExampleState extends State<NavigationExample> {
         Container(
             //color: Colors.blue,
             alignment: Alignment.center,
-            child: const Text('Profile page') // replace with profile page
+            child: const MyProfile() // replace with profile page
             ),
       ][currentPageIndex],
       bottomNavigationBar: NavigationBar(

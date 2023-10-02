@@ -1,6 +1,6 @@
 # GI-T8-Winx-Club
 
-
+<img src="Frontend/assets/images/home_green_home.jpg" style="display: inline-block; margin: 0 auto>
 
 # Team members:
 Ooi Zhi Lin

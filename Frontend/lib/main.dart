@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:winx_app/assets/theme/colors.dart' as custom_color;
 import 'package:winx_app/assets/theme/text_styles.dart' as text_themes;
+import 'package:winx_app/pages/login_page.dart';
 import 'main_game_page.dart';
 import 'package:flame/flame.dart';
 import 'package:winx_app/pages/home_page.dart';
@@ -81,7 +82,7 @@ class MyApp extends StatelessWidget {
 
       // remove default debug banner
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: LoginScreen(),
     );
   }
 }

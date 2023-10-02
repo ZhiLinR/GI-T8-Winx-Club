@@ -37,25 +37,22 @@ class MyGame extends FlameGame with HasCollisionDetection {
       );
     }
 
-    // PLAYER
-    add(player);
-
     // Screen boundary
     add(ScreenHitbox());
+
+    // PLAYER
+    add(player);
 
     // COLLISIONS
     addCollision();
   }
 
   void addCollision() async =>
-      (await MapLoader.readRayWorldCollisionMap()).forEach((rect) {
+      (await MapLoader.readCollisionMap()).forEach((rect) {
         add(Collidable()
           ..position = Vector2(rect.left, rect.top)
           ..width = rect.width
           ..height = rect.height);
-        {
-          debugMode = true;
-        }
       });
 
   void onJoypadDirectionChanged(Direction direction) {

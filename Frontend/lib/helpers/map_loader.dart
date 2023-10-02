@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 
 class MapLoader {
-  static Future<List<Rect>> readRayWorldCollisionMap() async {
+  static Future<List<Rect>> readCollisionMap() async {
     final collidableRects = <Rect>[];
     final dynamic collisionMap = json.decode(
         await rootBundle.loadString('assets/tiles/collision.json'));

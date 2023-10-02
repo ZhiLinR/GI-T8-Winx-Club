@@ -26,13 +26,12 @@ class Player extends SpriteAnimationComponent with HasGameRef, CollisionCallback
           size: Vector2.all(70.0),
           position: Vector2(160, 464),
         ) {
-    add(RectangleHitbox());
+    add(CircleHitbox());
   }
 
   @override
   Future<void> onLoad() async {
     await _loadAnimations().then((_) => {animation = standingAnimation});
-    debugMode = true;
 }
 
   Future<void> _loadAnimations() async {
@@ -141,11 +140,12 @@ class Player extends SpriteAnimationComponent with HasGameRef, CollisionCallback
     return true;
   }
 
-  void moveDown(double delta) {
-    position.add(Vector2(0, delta * playerSpeed));
-  }
+
   void moveUp(double delta) {
     position.add(Vector2(0, delta * -playerSpeed));
+  }
+  void moveDown(double delta) {
+    position.add(Vector2(0, delta * playerSpeed));
   }
   void moveLeft(double delta) {
     position.add(Vector2(delta * -playerSpeed, 0));

@@ -3,6 +3,6 @@ import 'package:flame/components.dart';
 
 class Collidable extends PositionComponent{
   Collidable() {
-    add(RectangleHitbox());
+    add(RectangleHitbox()..collisionType = CollisionType.passive);
   }
 }

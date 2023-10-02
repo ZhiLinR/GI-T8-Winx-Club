@@ -30,3 +30,27 @@ class _PageTitleHeader extends State<PageTitleHeader> {
     );
   }
 }
+
+class GamePageHeader extends StatefulWidget {
+  const GamePageHeader({super.key});
+  @override
+  State<GamePageHeader> createState() => _GamePageHeader();
+}
+
+class _GamePageHeader extends State<GamePageHeader> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text("Return to Home")),
+        const CurrencyDisplay()
+      ],
+    );
+  }
+}

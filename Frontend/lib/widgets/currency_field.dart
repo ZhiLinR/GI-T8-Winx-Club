@@ -3,8 +3,6 @@ import 'package:winx_app/assets/theme/colors.dart' as custom_color;
 import 'package:winx_app/assets/theme/text_styles.dart';
 import 'package:winx_app/components/localStorage.dart';
 import 'package:winx_app/utility/webHandler.dart';
-import 'package:winx_app/main_game_page.dart';
-import 'package:flame/flame.dart';
 
 class CurrencyDisplay extends StatefulWidget {
   const CurrencyDisplay({super.key});
@@ -20,12 +18,10 @@ class _CurrencyDisplay extends State<CurrencyDisplay> {
   void initState() {
     late final Future itemList =
         Future.value(ApiService().getAccountByUsername(username));
-    dynamic catalogue;
     Future.value(itemList).then((value) {
       debugPrint(value.runtimeType.toString());
       accountBalance = value.balance;
     });
-    debugPrint(catalogue.runtimeType.toString());
     super.initState();
   }
 
@@ -48,7 +44,7 @@ class _CurrencyDisplay extends State<CurrencyDisplay> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 3, 0, 5),
+                    padding: const EdgeInsets.fromLTRB(0, 3, 0, 5),
                     child: TextStylingOptions.borderedText(
                         accountBalance.toString(), null, 20, null, true),
                   ),

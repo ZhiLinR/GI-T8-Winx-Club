@@ -39,7 +39,7 @@ class _ShopCatalogue extends State<ShopCatalogue>
         ));
       }
     });
-    debugPrint(catalogue.runtimeType.toString());
+    //debugPrint(catalogue.runtimeType.toString());
 
     super.initState();
   }

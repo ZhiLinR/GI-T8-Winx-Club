@@ -37,8 +37,10 @@ class TextStylingOptions {
     color ??= custom_color.mainTextBrown;
     fontsize ??= 20;
     if (strikethrough) {
-      customStyle =
-          TextStyle(color: color, decoration: TextDecoration.lineThrough);
+      customStyle = TextStyle(
+          color: color,
+          decoration: TextDecoration.lineThrough,
+          fontSize: fontsize);
     } else {
       customStyle = TextStyle(
         color: color,

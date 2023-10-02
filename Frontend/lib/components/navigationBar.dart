@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:winx_app/pages/home_page.dart';
+
 import 'package:winx_app/components/localStorage.dart';
 import 'package:winx_app/pages/profile_page.dart';
-
+import 'package:winx_app/pages/shop_page.dart';
+import 'package:winx_app/pages/tasklist.dart';
+/* 
 class NavigationBarApp extends StatelessWidget {
   const NavigationBarApp({super.key});
 
@@ -10,7 +13,7 @@ class NavigationBarApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(home: NavigationExample());
   }
-}
+} */
 
 class NavigationExample extends StatefulWidget {
   const NavigationExample({super.key});
@@ -30,7 +33,7 @@ class _NavigationExampleState extends State<NavigationExample> {
         Container(
           //color: Colors.red,
           alignment: Alignment.center,
-          child: const Text('Task list'), // replace with task list page
+          child: const TaskList(), // replace with task list page
         ),
         Container(
           //color: Colors.green,
@@ -49,7 +52,6 @@ class _NavigationExampleState extends State<NavigationExample> {
             currentPageIndex = index;
           });
         },
-        indicatorColor: Colors.amber[800],
         selectedIndex: currentPageIndex,
         destinations: const <Widget>[
           NavigationDestination(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'helpers/joypad.dart';
 import 'mygame.dart';
 import 'helpers/direction.dart';
+import 'package:winx_app/widgets/header.dart';
 
 class MainGamePage extends StatefulWidget {
   const MainGamePage({Key? key}) : super(key: key);
@@ -18,18 +19,26 @@ class MainGameState extends State<MainGamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
-          children: [
-            GameWidget(game: game),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.all(32.0),
-                child:
-                    Joypad(onDirectionChanged: game.onJoypadDirectionChanged),
-              ),
-            )
-          ],
-        ));
+      children: [
+        GameWidget(game: game),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Padding(
+            padding: const EdgeInsets.all(40.0),
+            child: Joypad(onDirectionChanged: game.onJoypadDirectionChanged),
+          ),
+        ),
+        const Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+                padding: EdgeInsets.all(30.0), child: GamePageHeader())),
+        Positioned(
+            child: Container(
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 1.0)),
+        ))
+      ],
+    ));
   }
 
   void onJoypadDirectionChanged(Direction direction) {

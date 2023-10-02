@@ -4,9 +4,13 @@ import 'package:winx_app/components/localStorage.dart';
 import 'package:winx_app/utility/account_model.dart';
 import 'package:winx_app/utility/webHandler.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+  @override
+  State<LoginScreen> createState() => _LoginScreen();
+}
 
+class _LoginScreen extends State<LoginScreen> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -70,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                       ? Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const NavigationBarApp()),
+                              builder: (context) => const NavigationExample()),
                         )
                       : const Text('Unable to login');
                 },

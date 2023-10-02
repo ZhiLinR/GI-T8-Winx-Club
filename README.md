@@ -13,6 +13,9 @@ Mikayla Lian
 
 Yun Waddy Soe
 
+# Instructions to run the app:
+
+
 # Built with:
 **Frontend**
 - [Flutter](https://api.flutter.dev/)

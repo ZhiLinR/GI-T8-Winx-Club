@@ -15,36 +15,36 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
-  int currentPageIndex = 0;
+  //int currentPageIndex = 0;
   final String pageTitle = "My Room";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        selectedIndex: currentPageIndex,
-        destinations: const <Widget>[
-          NavigationDestination(
-            selectedIcon: Icon(Icons.assignment),
-            icon: Icon(Icons.assignment_outlined),
-            label: 'Daily Tasks',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.account_box),
-            icon: Icon(Icons.account_box_outlined),
-            label: 'Profile',
-          ),
-        ],
-      ),
+      // bottomNavigationBar: NavigationBar(
+      //   onDestinationSelected: (int index) {
+      //     setState(() {
+      //       currentPageIndex = index;
+      //     });
+      //   },
+      //   selectedIndex: currentPageIndex,
+      //   destinations: const <Widget>[
+      //     NavigationDestination(
+      //       selectedIcon: Icon(Icons.assignment),
+      //       icon: Icon(Icons.assignment_outlined),
+      //       label: 'Daily Tasks',
+      //     ),
+      //     NavigationDestination(
+      //       selectedIcon: Icon(Icons.home),
+      //       icon: Icon(Icons.home_outlined),
+      //       label: 'Home',
+      //     ),
+      //     NavigationDestination(
+      //       selectedIcon: Icon(Icons.account_box),
+      //       icon: Icon(Icons.account_box_outlined),
+      //       label: 'Profile',
+      //     ),
+      //   ],
+      // ),
       body: Stack(
         alignment: Alignment.topRight,
         children: [

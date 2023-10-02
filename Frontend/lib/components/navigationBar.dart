@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-/// Flutter code sample for [NavigationBar].
-
-// void main() => runApp(const NavigationBarApp());
+import 'package:winx_app/pages/home_page.dart';
+import 'package:winx_app/components/localStorage.dart';
+import 'package:winx_app/pages/profile_page.dart';
 
 class NavigationBarApp extends StatelessWidget {
   const NavigationBarApp({super.key});
@@ -21,11 +20,29 @@ class NavigationExample extends StatefulWidget {
 }
 
 class _NavigationExampleState extends State<NavigationExample> {
-  int currentPageIndex = 0;
+  int currentPageIndex = 1;
+  //String username = getStringFromLocalStorage('username').toString();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: <Widget>[
+        Container(
+          //color: Colors.red,
+          alignment: Alignment.center,
+          child: const Text('Task list'), // replace with task list page
+        ),
+        Container(
+          //color: Colors.green,
+          alignment: Alignment.center,
+          child: const HomePage(), // replace with home page
+        ),
+        Container(
+            //color: Colors.blue,
+            alignment: Alignment.center,
+            child: const Text('Profile page') // replace with profile page
+            ),
+      ][currentPageIndex],
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           setState(() {
@@ -52,23 +69,6 @@ class _NavigationExampleState extends State<NavigationExample> {
           ),
         ],
       ),
-      body: <Widget>[
-        Container(
-          color: Colors.red,
-          alignment: Alignment.center,
-          child: const Text('Page 1'),
-        ),
-        Container(
-          color: Colors.green,
-          alignment: Alignment.center,
-          child: const Text('Page 2'),
-        ),
-        Container(
-          color: Colors.blue,
-          alignment: Alignment.center,
-          child: const Text('Page 3'),
-        ),
-      ][currentPageIndex],
     );
   }
 }

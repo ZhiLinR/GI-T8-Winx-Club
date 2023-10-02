@@ -73,7 +73,7 @@ class ApiService {
           ApiConstants.baseUrl + ApiConstants.accountEndpoint + endPoint);
 
       return await http.put(url, headers: headers, body: body).then((response) {
-        if (response.statusCode == 200) {
+        if (response.statusCode == 201) {
           Account model = accountFromJson(response.body);
           return model;
         } else {

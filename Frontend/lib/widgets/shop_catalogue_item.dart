@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:winx_app/assets/theme/colors.dart' as custom_color;
 import 'package:winx_app/assets/theme/text_styles.dart';
+import 'package:winx_app/components/localStorage.dart';
+import 'package:winx_app/utility/account_model.dart';
+import 'package:winx_app/utility/calculation.dart';
+import 'package:winx_app/utility/webHandler.dart';
 import 'package:winx_app/widgets/header.dart';
 
 class ShopCatalogueItem extends StatefulWidget {
@@ -118,6 +122,9 @@ class ShowItemDetails extends StatefulWidget {
 
 class _ShowItemDetails extends State<ShowItemDetails>
     with TickerProviderStateMixin {
+  String username = getStringFromLocalStorage('username').toString();
+  late Future account;
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -167,7 +174,41 @@ class _ShowItemDetails extends State<ShowItemDetails>
           child: const Text('Buy'),
           onPressed: () {
             //TO ADD UPDATE METHOD
-/*             Navigator.of(context).pop(); */
+            account = Future.value(ApiService().getAccountByUsername(username));
+            bool buy = purchasePossible(widget.itemPrice, account as Account);
+            if (buy) {
+              Account a = account as Account;
+              a.balance = calculatePurchase(a.balance, widget.itemPrice);
+
+              // Update items
+              bool itemExist = false;
+              for (UserItem i in a.items) {
+                if (i.itemName == widget.itemName) {
+                  i.itemCount += 1;
+                  itemExist = true;
+                  break;
+                }
+              }
+              !itemExist
+                  ? a.items
+                      .add(UserItem(itemName: widget.itemName, itemCount: 1))
+                  : null;
+
+              // Testing - print statements
+              debugPrint(a.balance.toString());
+              print(a);
+
+              Future result =
+                  Future.value(ApiService().putAccount(username, a));
+              if (result != null) {
+                const Text("Purchased!");
+              } else {
+                const Text("Purchase failed!");
+              }
+            } else {
+              const Text("You do not have enough currency!");
+            }
+            Navigator.of(context).pop();
           },
         ),
         ElevatedButton(

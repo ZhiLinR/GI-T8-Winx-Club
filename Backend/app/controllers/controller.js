@@ -212,7 +212,7 @@ exports.updateItem = (req, res) => {
     Item.findOneAndUpdate({ where: { item_name: item_name } }, req.body)
         .then(data => {
             if (data) {
-                res.status(200).send({
+                res.status(201).send({
                     message: "Item was updated successfully."
                 });
             } else {
@@ -325,7 +325,7 @@ exports.updateTask = (req, res) => {
     Task.findOneAndUpdate({ where: { task_name: task_name } }, req.body)
         .then(data => {
             if (data) {
-                res.status(200).send({
+                res.status(201).send({
                     message: "Task was updated successfully."
                 });
             } else {

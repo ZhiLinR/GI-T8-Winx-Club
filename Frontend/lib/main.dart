@@ -4,9 +4,17 @@ import 'package:winx_app/assets/theme/text_styles.dart' as text_themes;
 import 'main_game_page.dart';
 import 'package:flame/flame.dart';
 import 'package:winx_app/pages/home_page.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 //import 'package:winx_app/utility/widget_testing.dart';
 
-void main() {
+/* void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Flame.device.fullScreen();
+  runApp(const MyApp());
+} */
+
+Future main() async {
+  await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
   Flame.device.fullScreen();
   runApp(const MyApp());

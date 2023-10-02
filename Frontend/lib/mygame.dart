@@ -9,7 +9,7 @@ import 'helpers/direction.dart';
 import 'helpers/map_loader.dart';
 import 'components/collidable.dart';
 
-class MyGame extends FlameGame with HasCollisionDetection{
+class MyGame extends FlameGame with HasCollisionDetection {
   final Player player = Player();
 
   @override
@@ -48,21 +48,21 @@ class MyGame extends FlameGame with HasCollisionDetection{
   }
 
   void addCollision() async =>
-    (await MapLoader.readRayWorldCollisionMap()).forEach((rect) {
-      add(Collidable()
-        ..position = Vector2(rect.left, rect.top)
-        ..width = rect.width
-        ..height = rect.height); {
+      (await MapLoader.readRayWorldCollisionMap()).forEach((rect) {
+        add(Collidable()
+          ..position = Vector2(rect.left, rect.top)
+          ..width = rect.width
+          ..height = rect.height);
+        {
           debugMode = true;
         }
-    });
-
+      });
 
   void onJoypadDirectionChanged(Direction direction) {
     player.direction = direction;
   }
 
-    Collidable createCollidable(Rect rect) {
+  Collidable createCollidable(Rect rect) {
     final collidable = Collidable();
     collidable.position = Vector2(rect.left, rect.top);
     collidable.width = rect.width;

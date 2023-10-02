@@ -67,7 +67,7 @@ flutter:
   assets:
     - assets/images/
     - assets/tiles/
-    # - .env
+    - .env
 
     #Assets for the mini_games
     - lib/assets/mini_games/

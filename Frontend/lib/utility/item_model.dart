@@ -12,20 +12,24 @@ String itemToJson(Item data) => json.encode(data.toJson());
 
 class Item {
   String itemName;
+  String assetName;
   int itemPrice;
 
   Item({
     required this.itemName,
     required this.itemPrice,
+    required this.assetName,
   });
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
         itemName: json["item_name"],
         itemPrice: json["item_price"],
+        assetName: json["file_name"],
       );
 
   Map<String, dynamic> toJson() => {
         "item_name": itemName,
         "item_price": itemPrice,
+        "file_name": assetName,
       };
 }

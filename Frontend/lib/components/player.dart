@@ -1,18 +1,20 @@
 import 'package:flame/components.dart';
 import '../helpers/direction.dart';
 import 'package:flame/sprite.dart';
+// import 'package:winx_app/components/collision_block.dart';
 
 class Player extends SpriteAnimationComponent with HasGameRef {
-  final double _playerSpeed = 300.0;
-  final double _animationSpeed = 0.15;
+  final double playerSpeed = 300.0;
+  final double animationSpeed = 0.15;
 
-  late final SpriteAnimation _upAnimation;
-  late final SpriteAnimation _downAnimation;
-  late final SpriteAnimation _leftAnimation;
-  late final SpriteAnimation _rightAnimation;
-  late final SpriteAnimation _standingAnimation;
+  late final SpriteAnimation upAnimation;
+  late final SpriteAnimation downAnimation;
+  late final SpriteAnimation leftAnimation;
+  late final SpriteAnimation rightAnimation;
+  late final SpriteAnimation standingAnimation;
 
   Direction direction = Direction.none;
+  // List<CollisionBlock> collisionBlocks = [];
 
   Player()
       : super(
@@ -22,7 +24,8 @@ class Player extends SpriteAnimationComponent with HasGameRef {
 
   @override
   Future<void> onLoad() async {
-    await _loadAnimations().then((_) => {animation = _standingAnimation});
+    await _loadAnimations().then((_) => {animation = standingAnimation});
+    debugMode = true;
 }
 
   Future<void> _loadAnimations() async {
@@ -31,62 +34,74 @@ class Player extends SpriteAnimationComponent with HasGameRef {
       srcSize: Vector2(48.0, 48.0),
     );
 
-  _upAnimation =
-    spriteSheet.createAnimation(row: 0, stepTime: _animationSpeed, to: 6);
+  upAnimation =
+    spriteSheet.createAnimation(row: 0, stepTime: animationSpeed, to: 6);
 
-  _downAnimation =
-    spriteSheet.createAnimation(row: 1, stepTime: _animationSpeed, to: 6);
+  downAnimation =
+    spriteSheet.createAnimation(row: 1, stepTime: animationSpeed, to: 6);
   
-  _leftAnimation =
-    spriteSheet.createAnimation(row: 2, stepTime: _animationSpeed, to: 6);
+  leftAnimation =
+    spriteSheet.createAnimation(row: 2, stepTime: animationSpeed, to: 6);
   
-  _rightAnimation =
-    spriteSheet.createAnimation(row: 3, stepTime: _animationSpeed, to: 6);
+  rightAnimation =
+    spriteSheet.createAnimation(row: 3, stepTime: animationSpeed, to: 6);
   
-  _standingAnimation =
-    spriteSheet.createAnimation(row: 4, stepTime: _animationSpeed, to: 1);
+  standingAnimation =
+    spriteSheet.createAnimation(row: 4, stepTime: animationSpeed, to: 1);
   }
 
   @override
-  void update(double delta) {
-    super.update(delta);
-    movePlayer(delta);
+  void update(double dt) {
+    super.update(dt);
+    movePlayer(dt);
+    // _checkHorizontalCollisions();
   }
 
   void movePlayer(double delta) {
     switch (direction) {
       case Direction.up:
-        animation = _upAnimation;
+        animation = upAnimation;
         moveUp(delta);
         break;
       case Direction.down:
-        animation = _downAnimation;
+        animation = downAnimation;
         moveDown(delta);
         break;
       case Direction.left:
-        animation = _leftAnimation;
+        animation = leftAnimation;
         moveLeft(delta);
         break;
       case Direction.right:
-        animation = _rightAnimation;
+        animation = rightAnimation;
         moveRight(delta);
         break;
       case Direction.none:
-        animation = _standingAnimation;
+        animation = standingAnimation;
         break;
     }
   }
 
   void moveDown(double delta) {
-    position.add(Vector2(0, delta * _playerSpeed));
+    position.add(Vector2(0, delta * playerSpeed));
   }
   void moveUp(double delta) {
-    position.add(Vector2(0, delta * -_playerSpeed));
+    position.add(Vector2(0, delta * -playerSpeed));
   }
   void moveLeft(double delta) {
-    position.add(Vector2(delta * -_playerSpeed, 0));
+    position.add(Vector2(delta * -playerSpeed, 0));
   }
   void moveRight(double delta) {
-    position.add(Vector2(delta * _playerSpeed, 0));
+    position.add(Vector2(delta * playerSpeed, 0));
   }
+  
+  // void _checkHorizontalCollisions() {
+  //   for(final block in collisionBlocks) {
+  //     // handle collision for blocks that are not the sink
+  //     if(!block.isSink) {
+  //       if(checkCollision(this, block)) {
+          
+  //       }
+  //     }
+  //   }
+  // }
 }

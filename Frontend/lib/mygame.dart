@@ -2,13 +2,13 @@ import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-import 'package:winx_app/components/collision_block.dart';
 import 'components/player.dart';
 import 'helpers/direction.dart';
+import 'helpers/map_loader.dart';
+import 'components/world_collidable.dart';
 
-class MyGame extends FlameGame {
-  final Player _player = Player();
-  List<CollisionBlock> collisionBlocks = [];
+class MyGame extends FlameGame with HasCollisionDetection{
+  final Player player = Player();
 
   @override
   Future<void> onLoad() async {
@@ -36,36 +36,22 @@ class MyGame extends FlameGame {
     }
 
     // PLAYER
-    add(_player);
+    add(player);
 
     // COLLISIONS
-    final collisionsLayer = map.tileMap.getLayer<ObjectGroup>('Collisions');
-
-    if (collisionsLayer != null) {
-      for (final collision in collisionsLayer.objects) {
-        switch (collision.class_) {
-          case 'Sink':
-            final sink = CollisionBlock(
-              position: Vector2(collision.x, collision.y),
-              size: Vector2(collision.width, collision.height),
-              isSink: true,
-            );
-            collisionBlocks.add(sink);
-            add(sink);
-            break;
-          default:
-          final block = CollisionBlock(
-              position: Vector2(collision.x, collision.y),
-              size: Vector2(collision.width, collision.height),            
-          );
-          collisionBlocks.add(block);
-          add(block);
-        }
-      }
-    }
+    addWorldCollision();
   }
 
+  void addWorldCollision() async =>
+    (await MapLoader.readRayWorldCollisionMap()).forEach((rect) {
+      add(WorldCollidable()
+        ..position = Vector2(rect.left, rect.top)
+        ..width = rect.width
+        ..height = rect.height);
+    });
+
+
   void onJoypadDirectionChanged(Direction direction) {
-    _player.direction = direction;
+    player.direction = direction;
   }
 }

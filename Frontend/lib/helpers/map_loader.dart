@@ -6,7 +6,7 @@ class MapLoader {
   static Future<List<Rect>> readRayWorldCollisionMap() async {
     final collidableRects = <Rect>[];
     final dynamic collisionMap = json.decode(
-        await rootBundle.loadString('assets/rayworld_collision_map.json'));
+        await rootBundle.loadString('assets/tiles/collision.json'));
 
     for (final dynamic data in collisionMap['objects']) {
       collidableRects.add(Rect.fromLTWH(

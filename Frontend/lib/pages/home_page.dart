@@ -9,6 +9,8 @@ import 'package:flame/game.dart';
 import 'package:winx_app/pages/shop_page.dart';
 import 'package:winx_app/pages/friend_map.dart';
 import 'package:winx_app/widgets/friendslist.dart';
+import 'package:winx_app/components/localStorage.dart';
+import 'package:winx_app/utility/webHandler.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,6 +20,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
+  dynamic accountBalance;
+  String username = getStringFromLocalStorage('username').toString();
+  @override
+  void initState() {
+    final Future itemList =
+        Future.value(ApiService().getAccountByUsername(username));
+    Future.value(itemList).then((value) {
+      debugPrint(value.runtimeType.toString());
+      accountBalance = value.balance;
+      setState(() {});
+    });
+    super.initState();
+  }
+
   //int currentPageIndex = 0;
   final String pageTitle = "My Room";
   @override

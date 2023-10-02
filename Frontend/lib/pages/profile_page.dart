@@ -1,6 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:winx_app/assets/theme/text_styles.dart';
+
+import 'package:winx_app/assets/theme/colors.dart' as custom_color;
 //import 'package:flutter/widgets.dart';
 import 'package:winx_app/components/localStorage.dart';
 import 'package:winx_app/utility/account_model.dart';
@@ -45,29 +47,49 @@ class _MyProfileState extends State<MyProfile> {
       return const CircularProgressIndicator();
     }
     return Scaffold(
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
+        body: Stack(
+      children: [
+        const LoopingBackground(),
+        Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            TextStylingOptions.borderedText('My Profile', null, 40, null, true),
+            Container(
+              clipBehavior: Clip.antiAlias,
+              margin: const EdgeInsets.all(40),
+              width: 160,
+              height: 160,
               decoration: BoxDecoration(
+                  border: Border.all(
+                    color: custom_color.outlineBrown,
+                    width: 5,
+                  ),
                   borderRadius: BorderRadius.circular(15.0),
                   image: const DecorationImage(
-                      fit: BoxFit.fitWidth,
+                      fit: BoxFit.fitHeight,
                       image: AssetImage('lib/assets/theme/profile_pic.jpg'))),
               child: const Image(
+                  isAntiAlias: true,
+                  alignment: Alignment.bottomCenter,
                   fit: BoxFit.fitWidth,
-                  image: AssetImage("lib/assets/theme/background_house.png"))),
-          TextStylingOptions.borderedText(
-              'Name: $nickname', null, 30, null, false),
-          TextStylingOptions.borderedText(
-              'Currency: $currency', null, 30, null, false),
-          TextStylingOptions.borderedText(
-              'Tasks completed: $tasksCompleted', null, 30, null, false),
-        ],
-      )),
-    );
+                  image: AssetImage("lib/assets/theme/background_house.png")),
+            ),
+            Column(
+              children: [
+                TextStylingOptions.borderedText(
+                    'Name: $nickname', null, 30, null, false),
+                TextStylingOptions.borderedText(
+                    'Currency: $currency', null, 30, null, false),
+                TextStylingOptions.borderedText(
+                    'Tasks completed: $tasksCompleted', null, 30, null, false),
+              ],
+            )
+          ],
+        )),
+      ],
+    ));
   }
 }
 

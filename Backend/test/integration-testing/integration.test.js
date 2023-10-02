@@ -1,24 +1,6 @@
 const db = require("../../app/models");
 const Controller = require("../../app/controllers/controller");
 
-var accounts = [
-    {
-        "username": "sophie",
-        "password": "12345",
-        "nickname": "sophie",
-    },
-    {
-        "username": "yun",
-        "password": "12345",
-        "nickname": "yun",
-    },
-    {
-        "username": "ethan",
-        "password": "12345",
-        "nickname": "ethan",
-    }
-];
-
 describe("Account API", () => {
     beforeAll(async () => {
         await db.mongoose

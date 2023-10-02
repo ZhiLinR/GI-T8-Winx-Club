@@ -39,11 +39,11 @@ class MainGameState extends State<MainGamePage> {
                     MaterialPageRoute(
                         builder: (context) => const MiniGameTurnOffFaucet()));
               },
-              child: const SizedBox(
+              child: Container(
                 width: 100,
                 height: 100,
-                /* decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white, width: 1.0)), */
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 1)),
               )),
         ),
         const Align(

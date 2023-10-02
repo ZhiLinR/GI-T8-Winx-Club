@@ -16,11 +16,12 @@ class _CurrencyDisplay extends State<CurrencyDisplay> {
   String username = getStringFromLocalStorage('username').toString();
   @override
   void initState() {
-    late final Future itemList =
+    final Future itemList =
         Future.value(ApiService().getAccountByUsername(username));
     Future.value(itemList).then((value) {
       debugPrint(value.runtimeType.toString());
       accountBalance = value.balance;
+      setState(() {});
     });
     super.initState();
   }

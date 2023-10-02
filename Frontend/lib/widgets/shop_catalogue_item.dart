@@ -179,8 +179,6 @@ class _ShowItemDetails extends State<ShowItemDetails>
         ElevatedButton(
           child: const Text('Buy'),
           onPressed: () {
-            //TO ADD UPDATE METHOD
-
             account = Future.value(ApiService().getAccountByUsername(username));
             Future.value(account).then((value) {
               Account a = value!;
@@ -203,7 +201,7 @@ class _ShowItemDetails extends State<ShowItemDetails>
                     : null;
 
                 // Testing - print statements
-                debugPrint(a.balance.toString());
+                //debugPrint(a.balance.toString());
                 print(a);
 
                 var result = Future.value(ApiService().putAccount(username, a));

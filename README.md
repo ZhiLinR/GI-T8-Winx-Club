@@ -15,9 +15,9 @@ Yun Waddy Soe
 
 # Instructions to run the app:
 - Navigate to Backend folder and run the following command first:
-node server.js
+> node server.js
 - Navigate to Frontend and run the following command:
-flutter run
+> flutter run
 
 # Built with:
 **Frontend**

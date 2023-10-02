@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:winx_app/assets/theme/colors.dart' as custom_color;
-import 'package:winx_app/assets/theme/text_styles.dart' as text_themes;
+import 'package:winx_app/assets/theme/text_styles.dart';
+import 'package:winx_app/utility/webHandler.dart';
 import 'package:winx_app/main_game_page.dart';
 import 'package:flame/flame.dart';
 
@@ -12,6 +13,20 @@ class CurrencyDisplay extends StatefulWidget {
 }
 
 class _CurrencyDisplay extends State<CurrencyDisplay> {
+  dynamic accountBalance;
+  @override
+  void initState() {
+    late final Future itemList =
+        Future.value(ApiService().getAccountByUsername("yun"));
+    dynamic catalogue;
+    Future.value(itemList).then((value) {
+      debugPrint(value.runtimeType.toString());
+      accountBalance = value.balance;
+    });
+    debugPrint(catalogue.runtimeType.toString());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -26,15 +41,23 @@ class _CurrencyDisplay extends State<CurrencyDisplay> {
               border: Border.all(color: custom_color.outlineBrown, width: 3.0),
               borderRadius: BorderRadius.circular(100),
             ),
-            child: text_themes.TextStylingOptions.borderedText(
-                "100", null, 20, 1.0, false)),
-        const Positioned(right: 20, top: 10, child: AnimatedCoinBank())
+            child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 3, 0, 5),
+                    child: TextStylingOptions.borderedText(
+                        accountBalance.toString(), null, 20, null, true),
+                  ),
+                  CustomIcons.currencyIcon(20)
+                ]))
       ],
     );
   }
 }
 
-class AnimatedCoinBank extends StatefulWidget {
+/* class AnimatedCoinBank extends StatefulWidget {
   const AnimatedCoinBank({super.key});
 
   @override
@@ -44,19 +67,6 @@ class AnimatedCoinBank extends StatefulWidget {
 class _AnimatedCoinBank extends State<AnimatedCoinBank> {
   @override
   Widget build(BuildContext context) {
-    return const Stack(
-      children: [
-        Icon(
-          Icons.monetization_on_rounded,
-          fill: 1.0,
-          color: Color.fromARGB(0xFF, 0xFF, 0xDF, 0x36),
-        ),
-        Icon(
-          Icons.savings_rounded,
-          fill: 1.0,
-          color: Color.fromARGB(0xD8, 0xFF, 0x9A, 0x6F),
-        ),
-      ],
-    );
+    return CustomIcons.currencyIcon(20);
   }
-}
+} */

@@ -17,6 +17,7 @@ Future main() async {
   await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
   Flame.device.fullScreen();
+
   runApp(const MyApp());
 }
 

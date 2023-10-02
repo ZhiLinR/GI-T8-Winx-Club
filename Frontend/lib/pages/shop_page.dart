@@ -5,7 +5,6 @@ import 'package:winx_app/assets/theme/text_styles.dart' as text_themes;
 import 'package:winx_app/mygame.dart';
 import 'package:winx_app/widgets/header.dart';
 import 'package:winx_app/widgets/shop_catalogue_item.dart';
-import 'package:winx_app/utility/item_model.dart';
 import 'package:winx_app/utility/webHandler.dart';
 
 import 'package:flame/flame.dart';
@@ -29,21 +28,19 @@ class _ShopCatalogue extends State<ShopCatalogue>
     late final Future itemList = Future.value(ApiService().getItems());
     dynamic catalogue;
     Future.value(itemList).then((value) {
-      debugPrint(value.runtimeType.toString());
+      //debugPrint(value.runtimeType.toString());
       catalogue = value;
       for (var element in catalogue) {
         shopCatalogue.add(ShopCatalogueItem(
-            itemName: element.itemName,
-            itemPrice: element.itemPrice,
-            fileName: element.assetName));
+          itemName: element.itemName,
+          itemPrice: element.itemPrice,
+          fileName: element.assetName,
+          description: element.description,
+        ));
       }
     });
     debugPrint(catalogue.runtimeType.toString());
 
-/*     Future.value(itemList).then((value) => debugPrint(value.toString())
-        /*  */
-        ); */
-//Future<http
     super.initState();
   }
 
@@ -64,7 +61,7 @@ class _ShopCatalogue extends State<ShopCatalogue>
                 return AnimatedContainer(
                   padding: const EdgeInsets.fromLTRB(30, 0, 30, 10),
                   width: MediaQuery.sizeOf(context).width,
-                  height: MediaQuery.sizeOf(context).height * 0.8,
+                  height: MediaQuery.sizeOf(context).height * 0.7,
                   duration: const Duration(seconds: 1),
                   curve: Curves.bounceIn,
                   child: GridView.count(

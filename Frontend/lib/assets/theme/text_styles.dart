@@ -99,3 +99,23 @@ class TextStylingOptions {
 }
 
 //Specifically for Headers
+
+//Standard Icons
+class CustomIcons {
+  static Stack currencyIcon(double size) {
+    return Stack(alignment: Alignment.center, children: [
+      Icon(
+        Icons.monetization_on_rounded,
+        fill: 1.0,
+        size: size,
+        color: const Color.fromARGB(0xFF, 0xFF, 0xDF, 0x36),
+      ),
+      Icon(
+        Icons.monetization_on_outlined,
+        fill: 1.0,
+        size: size,
+        color: const Color.fromARGB(0xFF, 0xCF, 0xB8, 0x3F),
+      ),
+    ]);
+  }
+}

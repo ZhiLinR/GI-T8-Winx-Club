@@ -6,6 +6,9 @@ import 'package:simple_animations/simple_animations.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_gif/flutter_gif.dart';
+import 'package:winx_app/components/localStorage.dart';
+import 'package:winx_app/utility/account_model.dart';
+import 'package:winx_app/utility/webHandler.dart';
 
 class MiniGameTurnOffFaucet extends StatefulWidget {
   const MiniGameTurnOffFaucet({super.key});
@@ -51,6 +54,11 @@ class _Faucet extends State<Faucet> with TickerProviderStateMixin {
 //GIF
   double currentFrame = 0;
   late FlutterGifController controller, controller2;
+
+  String username = getStringFromLocalStorage('username').toString();
+  late final Future<Account?> account;
+  final int reward = 100;
+
   @override
   void initState() {
     controller = FlutterGifController(vsync: this);
@@ -124,6 +132,25 @@ class _Faucet extends State<Faucet> with TickerProviderStateMixin {
                 controller.animateTo(18,
                     duration: const Duration(milliseconds: 500));
                 controller2.animateTo(8, duration: const Duration(seconds: 5));
+
+                // UPDATE METHOD
+                account =
+                    Future.value(ApiService().getAccountByUsername(username));
+                Future.value(account).then((value) {
+                  Account a = value!;
+                  a.balance += reward;
+                  a.taskCount += 1;
+
+                  var result =
+                      Future.value(ApiService().putAccount(username, a));
+                  if (result != null) {
+                    const Text("Task successfully completed!");
+                  } else {
+                    const Text("Task completion failed!");
+                  }
+                  setState(() {});
+                });
+
                 Future.delayed(const Duration(seconds: 6), () {
                   setState(() {
                     Navigator.pop(context);
